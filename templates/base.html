@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Shopping App{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ff9900;
+            --secondary-color: #232f3e;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .navbar {
+            background-color: var(--secondary-color) !important;
+        }
+        
+        .navbar-brand {
+            color: var(--primary-color) !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            background-color: #cc7a00;
+            border-color: #cc7a00;
+        }
+        
+        .product-card {
+            transition: transform 0.2s;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .product-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .cart-badge {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            margin-top: 50px;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <i class="fas fa-shopping-bag"></i> ShopEase
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'product_list' %}">Products</a>
+                    </li>
+                </ul>
+                
+                <!-- Search -->
+                <form class="d-flex me-3" action="{% url 'product_list' %}" method="get">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Search products..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="{% url 'cart' %}">
+                            <i class="fas fa-shopping-cart"></i> Cart
+                            {% if cart_item_count > 0 %}
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill cart-badge">
+                                {{ cart_item_count }}
+                            </span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'order_list' %}">My Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout ({{ user.username }})</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Messages -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 ShopEase. All rights reserved.</p>
+            <p class="mb-0">Your one-stop shop for everything you need!</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
