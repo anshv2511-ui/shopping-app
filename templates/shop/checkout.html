@@ -65,7 +65,7 @@
                 {% for item in cart_items %}
                 <div class="d-flex justify-content-between mb-2">
                     <span>{{ item.product.name }} x {{ item.quantity }}</span>
-                    <span>${{ item.get_subtotal }}</span>
+                    <span>₹{{ item.get_subtotal }}</span>
                 </div>
                 {% endfor %}
                 
@@ -73,7 +73,7 @@
                 
                 <div class="d-flex justify-content-between mb-2">
                     <span>Subtotal:</span>
-                    <strong>${{ total }}</strong>
+                    <strong>₹{{ total }}</strong>
                 </div>
                 <div class="d-flex justify-content-between mb-3 pb-3 border-bottom">
                     <span>Shipping:</span>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="d-flex justify-content-between">
                     <h5>Total:</h5>
-                    <h5 class="text-primary">${{ total }}</h5>
+                    <h5 class="text-primary">₹{{ total }}</h5>
                 </div>
             </div>
         </div>

@@ -42,16 +42,16 @@
                         {% for item in order.items.all %}
                         <tr>
                             <td>{{ item.product.name }}</td>
-                            <td>${{ item.price }}</td>
+                            <td>₹{{ item.price }}</td>
                             <td>{{ item.quantity }}</td>
-                            <td>${{ item.get_subtotal }}</td>
+                            <td>₹{{ item.get_subtotal }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colspan="3" class="text-end"><strong>Total:</strong></td>
-                            <td><strong class="text-primary">${{ order.total_amount }}</strong></td>
+                            <td><strong class="text-primary">₹{{ order.total_amount }}</strong></td>
                         </tr>
                     </tfoot>
                 </table>

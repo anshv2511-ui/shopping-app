@@ -26,7 +26,7 @@
                         <p class="text-muted small">{{ item.product.category.name }}</p>
                     </div>
                     <div class="col-md-2">
-                        <p class="mb-0"><strong>${{ item.product.price }}</strong></p>
+                        <p class="mb-0"><strong>₹{{ item.product.price }}</strong></p>
                     </div>
                     <div class="col-md-2">
                         <form method="post" action="{% url 'update_cart' item.pk %}">
@@ -40,7 +40,7 @@
                         </form>
                     </div>
                     <div class="col-md-2 text-end">
-                        <p class="mb-2"><strong>${{ item.get_subtotal }}</strong></p>
+                        <p class="mb-2"><strong>₹{{ item.get_subtotal }}</strong></p>
                         <a href="{% url 'remove_from_cart' item.pk %}" class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i> Remove
                         </a>
@@ -59,7 +59,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between mb-2">
                     <span>Subtotal:</span>
-                    <strong>${{ total }}</strong>
+                    <strong>₹{{ total }}</strong>
                 </div>
                 <div class="d-flex justify-content-between mb-3 pb-3 border-bottom">
                     <span>Shipping:</span>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="d-flex justify-content-between mb-3">
                     <h5>Total:</h5>
-                    <h5 class="text-primary">${{ total }}</h5>
+                    <h5 class="text-primary">₹{{ total }}</h5>
                 </div>
                 <div class="d-grid">
                     {% if user.is_authenticated %}

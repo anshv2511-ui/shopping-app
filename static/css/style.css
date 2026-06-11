@@ -1,1 +1,199 @@
-/* Custom styles for the shopping app */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #fca311;
+    --primary-hover: #e38e00;
+    --secondary-color: #131921;
+    --nav-color: #232f3e;
+    --bg-color: #f8f9fa;
+    --text-color: #333333;
+    --card-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--secondary-color) !important;
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
+}
+
+.nav-link {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+.navbar form .form-control {
+    border-radius: 20px 0 0 20px;
+    border: none;
+    padding-left: 1rem;
+}
+
+.navbar form .btn {
+    border-radius: 0 20px 20px 0;
+    background-color: var(--primary-color);
+    border: none;
+    color: #fff;
+}
+
+.navbar form .btn:hover {
+    background-color: var(--primary-hover);
+    color: #fff;
+}
+
+.cart-badge {
+    background-color: var(--primary-color);
+    color: #fff !important;
+    top: 5px !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+/* Main Content area */
+main {
+    flex: 1;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    box-shadow: 0 4px 12px rgba(252, 163, 17, 0.4);
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--card-shadow);
+}
+
+.product-img {
+    height: 220px;
+    object-fit: contain;
+    padding: 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+}
+
+/* Hero Section */
+.jumbotron {
+    background: linear-gradient(135deg, var(--nav-color) 0%, var(--secondary-color) 100%) !important;
+    color: #fff;
+    padding: 4rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.jumbotron h1 {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.jumbotron .lead {
+    font-weight: 300;
+}
+
+/* Category Cards */
+.category-card {
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    border: 1px solid #eaeaea;
+}
+
+.category-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 8px 24px rgba(252, 163, 17, 0.15);
+}
+
+.category-card .card-body {
+    padding: 2rem 1rem;
+}
+
+.category-card i {
+    color: var(--primary-color) !important;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover i {
+    transform: scale(1.1);
+}
+
+/* Sidebar List */
+.list-group-item {
+    border: none;
+    padding: 0.8rem 1.25rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.list-group-item:hover, .list-group-item-action:focus {
+    background-color: #fff5e6;
+    color: var(--primary-hover);
+}
+
+.card-header {
+    background-color: var(--nav-color);
+    color: white;
+    font-weight: 600;
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color);
+    color: #d1d5db;
+    padding: 3rem 0;
+    margin-top: 4rem;
+}
+
+footer p {
+    font-size: 0.9rem;
+}

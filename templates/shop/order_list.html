@@ -30,13 +30,13 @@
                         <p class="mb-1"><strong>Items:</strong></p>
                         <ul class="list-unstyled">
                             {% for item in order.items.all %}
-                            <li>{{ item.product.name }} x {{ item.quantity }} - ${{ item.get_subtotal }}</li>
+                            <li>{{ item.product.name }} x {{ item.quantity }} - ₹{{ item.get_subtotal }}</li>
                             {% endfor %}
                         </ul>
                     </div>
                     <div class="col-md-4 text-end">
                         <p class="mb-1"><strong>Total:</strong></p>
-                        <h4 class="text-primary">${{ order.total_amount }}</h4>
+                        <h4 class="text-primary">₹{{ order.total_amount }}</h4>
                         <a href="{% url 'order_detail' order.pk %}" class="btn btn-outline-primary btn-sm">
                             <i class="fas fa-eye"></i> View Details
                         </a>
